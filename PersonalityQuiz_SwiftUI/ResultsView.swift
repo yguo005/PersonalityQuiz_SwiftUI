@@ -37,14 +37,14 @@ struct ResultsView: View {
     //   - Access modifier: private (only this view needs it)
     //   - Syntax: private var mostCommonAnswer: AnimalType { }
     private var mostCommonAnswer: AnimalType{
-    // THE ALGORITHM (Dictionary Counting Pattern):
-    //
-    // Step 1: Create empty dictionary to count votes
-    //   - var counts: [AnimalType: Int] = [:]
-    //   - Keys = animals (.lion, .cat, etc.)
-    //   - Values = how many times each appeared
+        // THE ALGORITHM (Dictionary Counting Pattern):
+        //
+        // Step 1: Create empty dictionary to count votes
+        //   - var counts: [AnimalType: Int] = [:]
+        //   - Keys = animals (.lion, .cat, etc.)
+        //   - Values = how many times each appeared
         var counts: [AnimalType: Int] = [:] //[:] = start empty
-    
+        
         //
         // Step 2: Loop through all responses
         //   - for response in responses { }
@@ -61,20 +61,20 @@ struct ResultsView: View {
         for response in responses {
             counts[response.type, default:0] += 1
         }
-            // Step 3: Find the animal with highest count
-            //   - Use: counts.max(by: comparison)
-            //   - Comparison: { $0.value < $1.value }
-            //   - Then get the .key (which is the AnimalType)
-            //   - Use ! to force unwrap (safe because responses isn't empty)
-            return counts.max{$0.value < $1.value}!.key
-        }
-        //
-        // Understanding max(by:):
-        //   - $0 = first pair being compared (e.g., .lion: 2)
-        //   - $1 = second pair being compared (e.g., .cat: 1)
-        //   - $0.value < $1.value means "return the one with larger value"
-        //   - Returns: the dictionary entry with max count
-        //   - .key extracts the AnimalType from the (key, value) pair
+        // Step 3: Find the animal with highest count
+        //   - Use: counts.max(by: comparison)
+        //   - Comparison: { $0.value < $1.value }
+        //   - Then get the .key (which is the AnimalType)
+        //   - Use ! to force unwrap (safe because responses isn't empty)
+        return counts.max{$0.value < $1.value}!.key
+    }
+    //
+    // Understanding max(by:):
+    //   - $0 = first pair being compared (e.g., .lion: 2)
+    //   - $1 = second pair being compared (e.g., .cat: 1)
+    //   - $0.value < $1.value means "return the one with larger value"
+    //   - Returns: the dictionary entry with max count
+    //   - .key extracts the AnimalType from the (key, value) pair
     
     
     // MARK: - Step 3: Build the UI
@@ -128,12 +128,23 @@ struct ResultsView: View {
         //   - Action: Set quizActive = false
         //   - This dismisses the entire quiz navigation stack!
         .toolbar{
-            Button("Done"){
-                quizActive = false
+            // NEW: Add ShareLink to toolbar
+            ToolbarItem(placement: .topBarTrailing){// puts Done button on the RIGHT
+                Button("Done"){
+                    quizActive = false
+                }
+            }
+            ToolbarItem(placement: .topBarLeading){// puts ShareLink on the LEFT
+                ShareLink(
+                    item: "I got \(String(mostCommonAnswer.rawValue))! \(mostCommonAnswer.definition)",
+                    subject: Text("My Personality Quiz Result"),
+                    message: Text("Check out what I got!")
+                )
             }
         }
-        
     }
+    
+    
 }
 
 // MARK: -Understanding Guide

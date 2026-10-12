@@ -98,10 +98,18 @@ struct QuestionView: View {
                     RangedAnswerView(answers: question.answers, submit: answered(with:))
                 }
             }
-            .id(questionIndex)
+            // .id(questionIndex)
             // IMPORTANT: Add .id(questionIndex) to the Group
             //   - This forces SwiftUI to treat each question as a NEW view
             //   - Without this, toggles/sliders won't reset between questions!
+            
+            // NEW TRANSITION
+            //  New questions slide in from the right and fade in
+            //Old questions slide out to the left and fade out
+
+            .transition(.asymmetric(
+                insertion: .move(edge: .trailing).combined(with: .opacity),
+                removal: .move(edge: .leading).combined(with: .opacity)))
             
             // Hint: Add another Spacer() at the bottom
             Spacer()
@@ -151,7 +159,10 @@ struct QuestionView: View {
         if questionIndex + 1 < allQuestions.count {
             //          // More questions exist
             //          // Increment questionIndex by 1
-            questionIndex += 1
+            // NEW ANIMATION
+            withAnimation((.easeInOut(duration: 0.4))){
+                questionIndex += 1
+            }
         } else {
             //          // That was the last question
             //          // Set showResults to true

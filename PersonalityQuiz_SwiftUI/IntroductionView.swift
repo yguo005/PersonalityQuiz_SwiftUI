@@ -21,27 +21,34 @@ struct IntroductionView: View {
                 Spacer()
                 
                 HStack {
-                    Text("🐱")
+                    //Text("🐱")
+                    Text("🦁")
                     Spacer()
-                    Text("🐢")
+                    //Text("🐢")
+                    Text("🦡")
+                    
                 }
                 .font(.system(size: 60))
                 
-                Text("Which Animal Are You?")
+               
+                Text("Which Hogwarts House Are You?")
                     .font(.largeTitle.bold())
                     .multilineTextAlignment(.center)
                     .padding(.vertical, 40)
                 
                 HStack {
-                    Text("🐰")
+                    
+                    Text("🦅")
                     Spacer()
-                    Text("🦁")
+                    
+                    Text("🐍")
                 }
                 .font(.system(size: 60))
                 
                 Spacer()
                 
-                Button("Begin Personality Quiz") {
+                //Button("Begin Personality Quiz")
+                Button("Begin Sorting") {
                     quizActive = true  // This triggers navigation!
                 }
                 .buttonStyle(.borderedProminent)

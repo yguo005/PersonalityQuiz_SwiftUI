@@ -49,26 +49,43 @@ struct Answer {
 enum AnimalType: Character {
     //   - Four cases: lion, cat, rabbit, turtle
     //   - Each case should have an emoji as its raw value (🦁, 🐱, 🐰, 🐢)
-    case lion = "🦁"
-    case cat = "🐱"
-    case rabbit = "🐰"
-    case turtle = "🐢"
+//    case lion = "🦁"
+//    case cat = "🐱"
+//    case rabbit = "🐰"
+//    case turtle = "🐢"
+//
+    
+    // NEW
+    case gryffindor = "🦁"
+    case hufflepuff = "🦡"
+    case ravenclaw = "🦅"
+    case slytherin = "🐍"
     
     //   - Add a computed property called 'definition' that returns String
     //   - Use a switch statement to return different personality descriptions for each animal
     var definition: String {
-        // Example personality descriptions:
-        //   Lion: "Bold and social, you walk into a room and make it warmer..."
-        switch self {
-        case .lion:
-            return "Bold and social, you walk into a room and make it warmer. You do your best work surrounded by your favorite people."
-        case .cat:
-            return "Independent with a playful streak, you pick your moments — and when you show up, it is entirely on your own terms."
-        case .rabbit:
-            return "Gentle, quick, and endlessly curious, you bring soft energy everywhere you go and never quite sit still."
-        case .turtle:
-            return "Calm and thoughtful, you take the long view. You would rather do it right than do it fast — and it shows."
+//        // Example personality descriptions:
+//        //   Lion: "Bold and social, you walk into a room and make it warmer..."
+//        switch self {
+//        case .lion:
+//            return "Bold and social, you walk into a room and make it warmer. You do your best work surrounded by your favorite people."
+//        case .cat:
+//            return "Independent with a playful streak, you pick your moments — and when you show up, it is entirely on your own terms."
+//        case .rabbit:
+//            return "Gentle, quick, and endlessly curious, you bring soft energy everywhere you go and never quite sit still."
+//        case .turtle:
+//            return "Calm and thoughtful, you take the long view. You would rather do it right than do it fast — and it shows."
             
+        // NEW
+        switch self {
+        case .gryffindor:
+            return "Brave and daring, you stand up for what's right and never back down from a challenge. Your courage inspires others."
+        case .hufflepuff:
+            return "Loyal and hardworking, you value friendship and fairness above all. You bring people together with your kindness."
+        case .ravenclaw:
+            return "Clever and creative, you seek knowledge and think outside the box. Your wit and wisdom set you apart."
+        case .slytherin:
+            return "Ambitious and cunning, you know what you want and how to get it. Your determination leads you to success."
         }
     }
     
@@ -79,64 +96,98 @@ enum AnimalType: Character {
 // Hint: Create a constant called allQuestions that is an array of Question structs
 let allQuestions: [Question] = [
     // Question 1: Single choice
+//    Question(
+//    //   - Text: "Which food do you like the most?"
+//    text: "Which food do you like the most?",
+//    //   - Type: .single
+//    type: .single,
+//    //   - Answers: Steak (lion), Fish (cat), Carrots (rabbit), Corn (turtle)
+//    answers: [
+//        Answer (text: "Steak", type: .lion),
+//        Answer(text: "Fish", type: .cat),
+//        Answer(text: "Carrots", type: .rabbit),
+//        Answer(text: "Corn", type: .turtle),
+//    ]
+//    ),
+//    // Question 2: Multiple choice
+//    //   - Text: "Which of the following activities do you enjoy?"
+//    //   - Type: .multiple
+//    //   - Answers: Swimming (turtle), Sleeping (cat), Cuddling (rabbit), Eating (lion)
+//    Question (
+//        text: "Which of the following activities do you enjoy?",
+//        type: .multiple,
+//        answers: [
+//            Answer(text: "Swimming", type: .turtle),
+//            Answer(text: "Sleeping", type: .cat),
+//            Answer(text: "Cuddling", type: .rabbit),
+//            Answer(text: "Eating", type: .lion)
+//        ]
+//    ),
+//    // Question 3: Range (slider)
+//    //   - Text: "How much do you enjoy car rides?"
+//    //   - Type: .ranged
+//    //   - Answers: "I dislike them" (cat), "I get a little nervous" (rabbit),
+//    //              "I barely notice them" (turtle), "I love them" (lion)
+//    Question(text: "How much do you enjoy car rides?",
+//             type: .ranged,
+//             answers: [
+//                Answer(text: "I dislike them", type: .cat),
+//                Answer(text: "I get a little nervous", type: .rabbit),
+//                Answer(text: "I barely notice them", type: .turtle),
+//                Answer(text: "I love them", type: .lion)
+//             ]),
+//    // NEW Question4
+//    Question(text: "What's your ideal vacation?",
+//             type: .single,
+//             answers: [
+//                Answer(text: "Beach resort", type: .turtle),
+//                Answer(text: "Mountain cabin", type: .rabbit),
+//                Answer(text: "Big city adventure", type: .lion),
+//                Answer(text: "Cozy staycation", type: .cat)
+//             ]),
+//    // NEW Question 5
+//    Question(text: "Which weather do you enjoy?",
+//             type: .multiple,
+//             answers: [
+//                Answer(text: "Sunny and warm", type: .lion),
+//                Answer(text: "Cool and breezy", type: .rabbit),
+//                Answer(text: "Rainy and cozy", type: .cat),
+//                Answer(text: "Mild and calm", type: .turtle)
+//             ])
+    
+    // NEW QUESTIONS
     Question(
-    //   - Text: "Which food do you like the most?"
-    text: "Which food do you like the most?",
-    //   - Type: .single
-    type: .single,
-    //   - Answers: Steak (lion), Fish (cat), Carrots (rabbit), Corn (turtle)
-    answers: [
-        Answer (text: "Steak", type: .lion),
-        Answer(text: "Fish", type: .cat),
-        Answer(text: "Carrots", type: .rabbit),
-        Answer(text: "Corn", type: .turtle),
-    ]
-    ),
-    // Question 2: Multiple choice
-    //   - Text: "Which of the following activities do you enjoy?"
-    //   - Type: .multiple
-    //   - Answers: Swimming (turtle), Sleeping (cat), Cuddling (rabbit), Eating (lion)
-    Question (
-        text: "Which of the following activities do you enjoy?",
-        type: .multiple,
+        text: "What quality do you value most?",
+        type: .single,
         answers: [
-            Answer(text: "Swimming", type: .turtle),
-            Answer(text: "Sleeping", type: .cat),
-            Answer(text: "Cuddling", type: .rabbit),
-            Answer(text: "Eating", type: .lion)
+            Answer(text: "Bravery", type: .gryffindor),
+            Answer(text: "Loyalty", type: .hufflepuff),
+            Answer(text: "Intelligence", type: .ravenclaw),
+            Answer(text: "Ambition", type: .slytherin)
         ]
     ),
-    // Question 3: Range (slider)
-    //   - Text: "How much do you enjoy car rides?"
-    //   - Type: .ranged
-    //   - Answers: "I dislike them" (cat), "I get a little nervous" (rabbit),
-    //              "I barely notice them" (turtle), "I love them" (lion)
-    Question(text: "How much do you enjoy car rides?",
-             type: .ranged,
-             answers: [
-                Answer(text: "I dislike them", type: .cat),
-                Answer(text: "I get a little nervous", type: .rabbit),
-                Answer(text: "I barely notice them", type: .turtle),
-                Answer(text: "I love them", type: .lion)
-             ]),
-    // NEW Question4
-    Question(text: "What's your ideal vacation?",
-             type: .single,
-             answers: [
-                Answer(text: "Beach resort", type: .turtle),
-                Answer(text: "Mountain cabin", type: .rabbit),
-                Answer(text: "Big city adventure", type: .lion),
-                Answer(text: "Cozy staycation", type: .cat)
-             ]),
-    // NEW Question 5
-    Question(text: "Which weather do you enjoy?",
-             type: .multiple,
-             answers: [
-                Answer(text: "Sunny and warm", type: .lion),
-                Answer(text: "Cool and breezy", type: .rabbit),
-                Answer(text: "Rainy and cozy", type: .cat),
-                Answer(text: "Mild and calm", type: .turtle)
-             ])
+    
+    Question(
+        text: "Which classes would you take?",
+        type: .multiple,
+        answers: [
+            Answer(text: "Defense Against Dark Arts", type: .gryffindor),
+            Answer(text: "Herbology", type: .hufflepuff),
+            Answer(text: "Charms", type: .ravenclaw),
+            Answer(text: "Potions", type: .slytherin)
+        ]
+    ),
+    
+    Question(
+        text: "How competitive are you?",
+        type: .ranged,
+        answers: [
+            Answer(text: "Not at all", type: .hufflepuff),
+            Answer(text: "Somewhat", type: .ravenclaw),
+            Answer(text: "Very", type: .gryffindor),
+            Answer(text: "Extremely", type: .slytherin)
+        ]
+    )
 ]
 
 
